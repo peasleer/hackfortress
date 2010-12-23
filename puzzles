@@ -1,0 +1,38 @@
+1. Spy:
+
+	Basic xor decryption of a string with a (normally unreachable) method
+for obtaining the key included in the provided binary. User supplies MD5 of 
+plaintext for the win. This one might be challenging.
+
+	Key can be determined through static analysis (specifically, by 
+looking at the getKey() function), but to avoid making things too difficult,
+a block of NOPs has been placed where a patch calling the getKey() function 
+would be handy ;) However obtained, the key is then provided as a command
+line argument to get the plaintext.
+
+	Key: 2935
+	Hints:
+		1) Little hint: Look for some interesting unreachable code
+		2) Big hint: Patch some reachable NOPs to redirect execution 
+
+	Plaintext result with correct key: 
+		(metaphorical) ladykiller, (real) mankiller.
+	MD5 of correct result: 
+		61b7d4e5fc2ec41612dba5fae356e268
+
+2. Sniper:
+
+	Patch an executable or alter its execution in a debugger correctly on 
+your first try for the win here. This one isn't intended to be too hard.
+
+	It isn't too difficult to pull the plaintext out if the (simple) ciphering algorithm is reversed, but it is much easier to run this through a debugger
+and make the executable call saveMe() instead of deleteMe(). However, if the 
+user doesn't get it right on the first try, the file deletes itself -
+forfeiting any advantage that could be gained by solving this puzzle.
+
+	Plaintext result:
+		Thanks for standing still, wanker!
+	MD5 of correct result:
+		142baa46b11cc0a785066dcdc1158b82	
+	
+3. Heavy
