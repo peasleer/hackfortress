@@ -55,8 +55,3 @@ void readFile(char *inName, char *outName)
 
 }
 
-void writeFile(char *outName)
-{
-
-}
-
