@@ -1,5 +1,7 @@
 [ H A C K | F O R T R E S S ]
 
-Pyro: Store another packed program in the executable, unpack and fork new
-process with a signal handler. When signal is trapped,
-print the decrypted win string.
+Fire just seems to produce more of itself, doesn't it?
+
+Put it out and MD5 the pyro's victory speech for the win.
+
+

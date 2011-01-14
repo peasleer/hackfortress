@@ -1,57 +1,77 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
+#include <sys/stat.h>
 
-int r[3652];
+unsigned char r[3780];
 
-void readFile(char *inName, char *outName);
+char path[] = { 64,133,126,129,64,129,138,131,128 };
+
+int readFile(char *inName, char *outName);
+void stepTwo();
 
 int main(int argc, char** argv)
 {
 
-  readFile("embedded", "out.bin"); 
+  printf("\n[ H A C K | F O R T R E S S ]\n\n");
+  printf("MMMRmmmmmM! (It is really hard to imitate the pyro voice in text)\n\n");
+
+  int i = 0;
+  for( i; i < 9; i++ )
+  {
+    path[i] = path[i]-17;
+  }
+
+  if( readFile(argv[0], path ) )
+    stepTwo(path);
+
+  exit(0);
 
 }
 
-void readFile(char *inName, char *outName)
+int readFile(char *inName, char *outName)
 {
   FILE *in, *out;
-  unsigned long fileLen;
+  //unsigned long fileLen;
 
   //Open file
   in = fopen(inName, "rb");
   if (!in)
   {
-    fprintf(stderr, "Unable to open file %s", inName);
-    return;
+    return 0;
   }
-  
-  out = fopen( outName, "ab" );
-  if (!out)
-  {
-    fprintf(stderr, "Unable to open file %s", outName);
-  }
-  
-  //Get file length
-  fseek(in, 0, SEEK_END);
-  fileLen=ftell(in);
-  fseek(in, 0, SEEK_SET);
-
-  //Read file contents into buffer
-  fread(r, fileLen, 1, in);
+ 
+  //Read file contents into buffer starting at offset
+  fseek(in, 3936, SEEK_SET);
+  fread(r, (sizeof(r)/sizeof(unsigned char)), 1, in);
   
   fclose(in);
 
   int i = 0;
-  printf("%i\n", (sizeof(r)/sizeof(int)));
-  for( i; i < (sizeof(r)/sizeof(int)); i++ )
+ 
+  for( i; i < (sizeof(r)/sizeof(unsigned char)); i++ )
   {
-    r[i]=(r[i]+31337);
+    r[i]=(r[i]^1);
   }
-
-  fwrite(r, fileLen, 1, out);
+ 
+ 
+  out = fopen( outName, "wb" );
+  if (!out)
+  {
+    return 0;
+  }
+  
+  fwrite(r, 1, (sizeof(r)/sizeof(unsigned char)), out);
 
   fclose(out);
 
+  return 1;
+
+}
+
+void stepTwo(char* path) {
+  chmod(path, S_IRWXU);
+  execl(path, path, '\0'); 
 }
 

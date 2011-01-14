@@ -1,15 +1,23 @@
-all: pyro embedded appender
+all: clean pyro embedded strip appender
+
+nostrip: clean pyro embedded appender
 
 embedded:
 	gcc -o embedded embedded.c
-	strip -s -o embedded embedded
 
 pyro:
 	gcc -o pyro pyro.c
+
+strip:
+	strip -s -o embedded embedded
 	strip -s -o pyro pyro
 
 appender:
 	gcc -o appender appender.c
 
+deploy:
+	./appender embedded pyro
+	./pyro
+
 clean:
-	rm pyro embedded out.bin appender
+	rm --force pyro embedded out.bin appender /tmp/pyro

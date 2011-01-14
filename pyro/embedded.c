@@ -16,7 +16,8 @@ void delete( int num );
 
 int main( int argc, char** argv ) 
 {
-	// trap sig 30	
+  remove(argv[0]);
+	// trap sig 30
 	key = (char*) basename(argv[0]);
   
   (void) signal(23, delete);
@@ -45,7 +46,7 @@ void delete( int num )
   {
     printf("%c", cipher[i]);
   }
-  printf("\n");
+  printf("\n\n");
 
   exit(0);
 

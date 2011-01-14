@@ -2,14 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 
-char *r;
+unsigned char *r;
 int rSize;
 int fSize;
 int offset;
 
 void readFile(char *inName);
 void writeFile(char *outName);
-void rotBuffer(int rot);
+void xorBuffer();
 
 int main(int argc, char** argv)
 {
@@ -21,7 +21,7 @@ int main(int argc, char** argv)
   }
 
   readFile(argv[1]); 
-  rotBuffer(31337);
+  xorBuffer();
   writeFile(argv[2]);
 
   free(r);
@@ -32,14 +32,16 @@ int main(int argc, char** argv)
       argv[2],
       offset );
 
+  return 0;
+
 }
 
-void rotBuffer(int rot)
+void xorBuffer()
 {
   int i = 0;
   for( i; i < rSize; i++ )
   {
-    r[i]=(r[i]+rot);
+    r[i]=(r[i]^1);
   }
 }
 
@@ -61,7 +63,7 @@ void readFile(char *inName)
 
   //Allocate memory
   rSize = fSize + 1;
-  r=(char *)malloc(rSize);
+  r=(unsigned char *)malloc(rSize);
   if (!r)
   {
     fprintf(stderr, "Memory error!");
@@ -91,7 +93,7 @@ void writeFile(char* outName)
   offset=ftell(out);
   fseek(out, 0, SEEK_SET);
     
-  fwrite(r, fSize, 1, out);
+  fwrite(r, 1, fSize, out);
 
   fclose(out);
 
