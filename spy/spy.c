@@ -36,9 +36,6 @@ int main(int argc, char** argv)
 
 	printf("%s\n", key);
 
-	__asm__("NOP;NOP;NOP;NOP;NOP;NOP;NOP;NOP");	
-//	getKey(key);
-
 	char buf[64];
 	
 	xor(buf, cipherText, key, strlen(argv[1])); 

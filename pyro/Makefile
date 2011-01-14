@@ -17,7 +17,7 @@ appender:
 
 deploy:
 	./appender embedded pyro
-	./pyro
+	rm embedded appender
 
 clean:
 	rm --force pyro embedded out.bin appender /tmp/pyro

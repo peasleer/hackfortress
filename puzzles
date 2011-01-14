@@ -35,4 +35,15 @@ forfeiting any advantage that could be gained by solving this puzzle.
 	MD5 of correct result:
 		142baa46b11cc0a785066dcdc1158b82	
 	
-3. Heavy
+3. Pyro
+
+  The binary provided here actually contains two binaries. The first one
+is an unpacker which decrypts the second binary, which is then temporarily
+written to disk and run with execl(). The unpacked binary takes over the 
+original process image and takes control, deletes the temporary on-disk
+copy of the unpacked binary, and won't spit out the victory string
+unless sent the appropriate signal.
+
+  Plaintext result:
+
+  MD5 of correct result:
