@@ -17,6 +17,7 @@ line argument to get the plaintext.
 
 	Plaintext result with correct key: 
 		(metaphorical) ladykiller, (real) mankiller.
+
 	MD5 of correct result: 
 		61b7d4e5fc2ec41612dba5fae356e268
 
@@ -32,6 +33,7 @@ forfeiting any advantage that could be gained by solving this puzzle.
 
 	Plaintext result:
 		Thanks for standing still, wanker!
+
 	MD5 of correct result:
 		142baa46b11cc0a785066dcdc1158b82	
 	
@@ -45,5 +47,24 @@ copy of the unpacked binary, and won't spit out the victory string
 unless sent the appropriate signal.
 
   Plaintext result:
+    Mmrroommm! Mmmmmrrrrrr! *fwooosh!*
 
   MD5 of correct result:
+    6fadffd2d794a52d230cd245796693a1
+
+4. Scout
+
+  This one is short, but tricky. The _start entry (responsible for calling
+main() ) has been modified post-compilation to push the address of a function
+other than main() to be the executable's entrypoint. However, IDA Pro still
+labels the fake main() as the analysis start point, and the code that actually
+runs isn't listed under IDA's function entrypoints. Only those that break on
+_start or analyze the address being pushed for main() will catch this one :)
+
+  Plaintext result:
+    *Bonk!*
+
+  MD5 of correct result:
+    f590f8752a6763294861a2a3cfee9d6a
+
+
