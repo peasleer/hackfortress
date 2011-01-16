@@ -1,6 +1,6 @@
 all:
 	gcc -o spy spy.c
-	strip -s -p spy spy
+	strip -s -o spy spy
 
 clean:
 	rm --force spy
