@@ -9,7 +9,6 @@ char banner[] = "[ H A C K | F O R T R E S S ]\n\n";
 
 int main(int argc, char** argv)
 {
-
   char key[] = {'l','u','l','z'};
   int ciphered[] = { 24, 7, 21, 90, 13, 18, 13, 19, 2, 74, 76, 36, 51, 43 };
   int i = 0;
@@ -26,14 +25,15 @@ int main(int argc, char** argv)
   exit(0);
 }
 
-int lol(int argc, char** argv)
+int newMain(int argc, char** argv)
 {
+  
   if( argc < 16 || !( argv[1][0] == banner[2]+1 && argv[2][0] == banner[4]+1 ) )
   {
+    //printf("argc: %i, argv[1][0]: %c, argv[2][0]: %c\n", argc, argv[1][0], argv[2][0]);
     main(argc, argv);
   }
 
-  // Print "\t*Bonk!*\n\n"
   printf("%s", banner);
 
   unsigned int a = 0x8048690; // +0
@@ -46,6 +46,7 @@ int lol(int argc, char** argv)
   unsigned int h = 0x80486FF; // +111 / 6F
   unsigned int i = 0x80486B1; // +33 / 21
 
+  // Print "\t*Bonk!*\n\n"
   printf("%c%c%c%c%c%c%c%c%c%c",b-a,d-a,e-a,h-a,g-a,f-a,i-a,d-a,c-a,c-a);
   exit(0);
 }

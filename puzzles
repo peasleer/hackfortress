@@ -72,6 +72,8 @@ In addition, I intentionally break the function entrypoint for the real main,
 which confuses disassemblers. Users will have to manually mark the section
 as code, which then obscures the data values contained within it.
 
+  Answer: I B 4 5 6 7 8 9 10 11 12 13 14 15 16
+
   Plaintext result:
     *Bonk!*
 
