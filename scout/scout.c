@@ -5,7 +5,7 @@
 
 void doPrint(int c);
 
-char banner[] = "[ H A C K | F O R T R E S ]\n\n";
+char banner[] = "[ H A C K | F O R T R E S S ]\n\n";
 
 int main(int argc, char** argv)
 {
