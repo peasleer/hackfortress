@@ -68,6 +68,7 @@ labels the fake main() as the analysis start point, and the code that actually
 runs isn't listed under IDA's function entrypoints. Only those that break on
 _start or analyze the address being pushed for main() will catch this one :)
 
+--FIX
 In addition, I intentionally break the function entrypoint for the real main,
 which confuses disassemblers. Users will have to manually mark the section
 as code, which then obscures the data values contained within it.
@@ -100,6 +101,9 @@ technique is used to keep the original exit() call in place.
 and the final string will only be decrypted if the user supplies the correct
 argument - in this case, the integer 110.
 
+  Answer:
+    110
+
   Plaintext result:
     I'm an engineer. Which means I solve problems.
 
@@ -107,6 +111,29 @@ argument - in this case, the integer 110.
     4f9bcd9bf846343f3b676a792cce8f
 
   Hints:
-    1) Little hint:
-    2) Big hint: 
-    
+    1) Little hint: The end is just as important as the beginning!
+    2) Big hint: The parameter from the command line is the exit code.
+
+6. Heavy
+
+  This is a very straightforward problem which will require people to
+brute-force the key. The idea is to break people away from straight reversing,
+and require people to write a script to break the cipher. Hints will play
+a huge part in people solving this quickly - especially the big hint,
+as it will reveal four bytes of the key (the word 'is,' surrounded by spaces),
+which contestents can use for automatic verification of decryption attempts.
+
+  Answer:
+    q R t u
+
+  Plaintext result:
+    Entire team is babies!
+
+  MD5 of correct result:
+    741c5db1c767bcd69c6a1c409a0ac320
+
+  Hints:
+    1) Little hint: No tricks here, brute force the key.
+    2) Big hint: the answer contains the word 'is'.
+
+7. 
