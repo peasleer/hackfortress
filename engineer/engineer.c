@@ -5,6 +5,14 @@
 #include <sys/ptrace.h>
 #include <unistd.h>
 
+#define DISASM_MISALIGN asm volatile ( \
+            "  pushl %eax       \n"        \
+            "  cmpl  %eax, %eax \n"        \
+            "  jz    0f         \n"        \
+            "  .byte 0x0F       \n"        \
+            "0:                 \n"        \
+            "  popl  %eax       \n")
+
 char key[] = "bamflamf";
 
 int ciphered[] = {
@@ -14,6 +22,9 @@ int ciphered[] = {
 
 void myExit(int status)
 {
+
+  DISASM_MISALIGN;
+
   if( status != 110 )
   {
     _exit(status);
@@ -71,6 +82,7 @@ int main(int argc, char** argv)
 
 int realMain(int argc, char** argv)
 { 
+  DISASM_MISALIGN;
   // Detect debuggers
   if (ptrace(PTRACE_TRACEME, 0, 1, 0) >= 0) {
     // If no debugger, overwrite exit() in GOT with myExit()
