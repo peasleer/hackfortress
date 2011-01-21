@@ -68,8 +68,7 @@ labels the fake main() as the analysis start point, and the code that actually
 runs isn't listed under IDA's function entrypoints. Only those that break on
 _start or analyze the address being pushed for main() will catch this one :)
 
---FIX
-In addition, I intentionally break the function entrypoint for the real main,
+In addition, I intentionally include a false ret in the real main,
 which confuses disassemblers. Users will have to manually mark the section
 as code, which then obscures the data values contained within it.
 
