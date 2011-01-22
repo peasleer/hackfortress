@@ -72,16 +72,14 @@ int main(int argc, char** argv)
       1, 28, 23, 7, 24, 9, 0, 18, 79 };
 
     int i = 0;
+    char c[] = { '\0', '\0' };
+    write(newsockfd,"\n", 1);
     for( i; i < (sizeof(ciphered)/sizeof(int)); i++ )
     {
-      ciphered[i] = ciphered[i] ^ buffer[i%9];
-      printf("%c", ciphered[i]);
+      c[0] = ciphered[i] ^ buffer[i%9];
+      n = write(newsockfd,c,1 );
     }
-    printf("\n");
-    write(newsockfd,"\n", 1);
-    n = write(newsockfd,ciphered,(sizeof(ciphered)/sizeof(int)) );
     write(newsockfd,"\n\n", 2);
-    printf("sent: %i, size:%i\n", n, (sizeof(ciphered)/sizeof(int)));
   }
 
   close(newsockfd);

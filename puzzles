@@ -1,4 +1,4 @@
-1. Spy:
+1. Spy (Easy/Medium):
 
 	Basic xor decryption of a string with a (normally unreachable) method
 for obtaining the key included in the provided binary. User supplies MD5 of 
@@ -19,7 +19,7 @@ line argument to get the plaintext.
 	MD5 of correct result: 
 		61b7d4e5fc2ec41612dba5fae356e268
 
-2. Sniper:
+2. Sniper (Easy)
 
 	Patch an executable or alter its execution in a debugger correctly on 
 your first try for the win here. This one isn't intended to be too hard.
@@ -40,7 +40,7 @@ forfeiting any advantage that could be gained by solving this puzzle
 	MD5 of correct result:
 		142baa46b11cc0a785066dcdc1158b82	
 	
-3. Pyro
+3. Pyro (Medium)
 
   The binary provided here actually contains two binaries. The first one
 is an unpacker which decrypts the second binary, which is then temporarily
@@ -59,7 +59,7 @@ unless sent the appropriate signal.
     1) Little hint: That is a pretty big binary.
     2) Big hint: Did I see a file drop?
 
-4. Scout
+4. Scout (Medium/Hard)
 
   This one is short, but tricky. The _start entry (responsible for calling
 main() ) has been modified post-compilation to push the address of a function
@@ -84,7 +84,7 @@ as code, which then obscures the data values contained within it.
     1) Little hint: Your disassembler might be hindering your progress.
     2) Big hint: This is not the main you are looking for ;)
 
-5. Engineer
+5. Engineer (Hard)
   
   This is another puzzle that is meant to frustrate people relying on 
 debuggers and disassemblers to do the work for them. There are two techniques
@@ -113,7 +113,7 @@ argument - in this case, the integer 110.
     1) Little hint: The end is just as important as the beginning!
     2) Big hint: The parameter from the command line is the exit code.
 
-6. Heavy
+6. Heavy (Easy)
 
   This is a very straightforward problem which will require people to
 brute-force the key. The idea is to break people away from straight reversing,
@@ -135,4 +135,22 @@ which contestents can use for automatic verification of decryption attempts.
     1) Little hint: No tricks here, brute force the key.
     2) Big hint: the answer contains the word 'is'.
 
-7. 
+7. Demoman (Easy/Medium)
+
+  This is relatively simple - a socket is opened and listens for a 
+string. Upon receiving the string, the answer is decrypted and returned.
+  
+  Answer:
+    eyelander
+
+  Plaintext result:
+    All o ya are dandies, prancin about with your heads full of eyeballs!
+
+  MD5 of correct result:
+    69bef23e85f507f147e012379b3559eb
+
+  Hints:
+    1) Little hint: Strings
+    2) Big hint: Netcat
+
+
