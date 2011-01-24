@@ -153,4 +153,22 @@ string. Upon receiving the string, the answer is decrypted and returned.
     1) Little hint: Strings
     2) Big hint: Netcat
 
+8. Soldier (Easy)
+
+  Another easy one - just change the executable name to the correct string
+before running to get the answer.
+
+  Answer:
+    Rename file to 'PuppySnuggy' before running.
+
+  Plaintext result:
+    And from that day forward any time a bunch of animals are gathered in one place it's called a zoo.
+
+  MD5 of correct result: 
+        b7cec2e0e5dfec327140cbc841b55ff5
+
+  Hints:
+    1) Little hint: What is in a name?
+    2) Big hint: /proc is an incredibly useful mount.
+
 
